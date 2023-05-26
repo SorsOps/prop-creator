@@ -1,0 +1,118 @@
+.root {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  background: #0d99ff;
+  cursor: pointer;
+  transition-property: background;
+  transition-duration: 0.1s;
+  height: 32px;
+  -webkit-transition-property: background;
+  -webkit-transition-duration: 0.1s;
+  border-radius: 6px;
+  padding: 12px 20px;
+  border-width: 0px;
+}
+.root > :global(.__wab_flex-container) {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-left: calc(0px - 8px);
+  width: calc(100% + 8px);
+}
+.root > :global(.__wab_flex-container) > *,
+.root > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.root > :global(.__wab_flex-container) > picture > img,
+.root > :global(.__wab_flex-container) > :global(.__wab_slot) > picture > img {
+  margin-left: 8px;
+}
+.rootshowStartIcon {
+  padding-left: 16px;
+}
+.rootshowEndIcon {
+  padding-right: 16px;
+}
+.rootisDisabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+.root___focusVisibleWithin {
+  box-shadow: inset 0px 0px 0px 2px #0d99ff, inset 0px 0px 0px 4px #000000;
+  background: #0d99ff;
+  outline: none;
+}
+.root:active {
+  background: #007be5;
+}
+.startIconContainer {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+.startIconContainershowStartIcon {
+  display: flex;
+}
+.slotTargetStartIcon {
+  color: #ededec;
+}
+.svg__z2Mlj {
+  position: relative;
+  object-fit: cover;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+}
+.contentContainer {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+.root .contentContainer___focusVisibleWithin {
+  outline: none;
+}
+.slotTargetChildren {
+  color: #ffffff;
+  font-weight: 500;
+  white-space: pre;
+  font-size: 11px;
+}
+.root .slotTargetChildren___focusVisibleWithin > *,
+.root .slotTargetChildren___focusVisibleWithin > :global(.__wab_slot) > *,
+.root .slotTargetChildren___focusVisibleWithin > :global(.__wab_slot) > :global(.__wab_slot) > *,
+.root .slotTargetChildren___focusVisibleWithin > :global(.__wab_slot) > :global(.__wab_slot) > :global(.__wab_slot) > *,
+.root .slotTargetChildren___focusVisibleWithin > picture > img,
+.root .slotTargetChildren___focusVisibleWithin > :global(.__wab_slot) > picture > img,
+.root .slotTargetChildren___focusVisibleWithin > :global(.__wab_slot) > :global(.__wab_slot) > picture > img,
+.root
+  .slotTargetChildren___focusVisibleWithin
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > picture
+  > img {
+  outline: none;
+}
+.endIconContainer {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+.endIconContainershowEndIcon {
+  display: flex;
+}
+.slotTargetEndIcon {
+  color: #ededec;
+}
+.svg__rvSaB {
+  position: relative;
+  object-fit: cover;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+}

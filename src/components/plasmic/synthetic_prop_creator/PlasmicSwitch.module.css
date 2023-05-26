@@ -1,0 +1,42 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: 32px;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 8px;
+  padding-right: 8px;
+  min-width: 0;
+}
+.freeBox__s8O6A {
+  display: flex;
+  position: relative;
+  width: 24px;
+  height: 12px;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  background: #0000004d;
+  flex-shrink: 0;
+  border-radius: 12px;
+  padding: 1px;
+}
+.freeBoxon__s8O6ASemX9 {
+  background: #0d99ff;
+  justify-content: flex-end;
+  align-items: center;
+}
+.freeBox__mLj7O {
+  display: block;
+  position: relative;
+  width: 10px;
+  height: 10px;
+  left: auto;
+  top: auto;
+  background: #ffffff;
+  flex-shrink: 0;
+  border-radius: 100%;
+  padding: 0px;
+}

@@ -1,0 +1,24 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  max-width: 100%;
+  position: relative;
+  border-radius: 2px;
+  padding: 8px;
+}
+.root:hover {
+  background: #e6e6e6;
+  display: flex;
+}
+.svg {
+  object-fit: cover;
+  max-width: 100%;
+  color: #000;
+  width: 15px;
+  height: 3px;
+  flex-shrink: 0;
+}
