@@ -1,3 +1,4 @@
+import 'core-js/stable';
 import { handleEvent, dispatch } from './codeMessageHandler';
 import {saveDataToComponent,isWithinMainComponent, mainComponent, convertLayerToJSON} from './helper'
 import { minimizeFlowGraph,execute,nodes } from '@tokens-studio/graph-engine';

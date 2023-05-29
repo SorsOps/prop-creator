@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const InlineChunkHtmlPlugin = require('react-dev-utils/InlineChunkHtmlPlugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const path = require('path');
 
 module.exports = (env, argv) => ({
@@ -14,9 +15,19 @@ module.exports = (env, argv) => ({
   },
 
   module: {
+    parser: { javascript: { url: 'relative' } },
     rules: [
+      { test: /\.m?js/, resolve: { fullySpecified: false } },
+      {
+        test: /\.js?$/, loader: 'swc-loader',
+        include:/node_modules[\/\\](@tokens-studio|colorjs.io)/ 
+      },
       // Converts TypeScript code to JavaScript
-      { test: /\.tsx?$/, use: 'ts-loader', exclude: /node_modules/ },
+      {
+        test: /\.tsx?$/, loader: 'ts-loader', options: {
+          transpileOnly: true,
+        }, exclude: /node_modules/
+      },
 
       // Enables including CSS by doing "import './file.css'" in your TypeScript code
       { test: /\.css$/, use: ['style-loader', { loader: 'css-loader' }] },
@@ -27,10 +38,15 @@ module.exports = (env, argv) => ({
   },
 
   // Webpack tries these extensions for you if you omit the extension like "import './file'"
-  resolve: { extensions: ['.tsx', '.ts', '.jsx', '.js'] },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.jsx', '.js'],
 
+    mainFields: ['browser', 'module', 'main'],
+  },
+  target: ['web', 'es6'],
   output: {
     filename: '[name].js',
+
     path: path.resolve(__dirname, 'dist'), // Compile into a folder called "dist"
   },
 
@@ -41,6 +57,12 @@ module.exports = (env, argv) => ({
       filename: 'ui.html',
       chunks: ['ui'],
       cache: false,
+    }),
+    new ForkTsCheckerWebpackPlugin({
+      async: argv.mode === 'development',
+      typescript: {
+        configFile: 'tsconfig.json',
+      },
     }),
     new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/ui/]),
   ],
