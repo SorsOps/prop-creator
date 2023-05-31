@@ -1,19 +1,24 @@
 import 'core-js/stable';
 import { handleEvent, dispatch } from './codeMessageHandler';
-import {saveDataToComponent,isWithinMainComponent, mainComponent, convertLayerToJSON} from './helper'
+import {saveDataToComponent,isWithinMainComponent, mainComponent, convertLayerToJSON, hexToRgb} from './helper'
 import { minimizeFlowGraph,execute,nodes } from '@tokens-studio/graph-engine';
-import Card from './Card.json'
+import Card from './Card.json';
 figma.showUI(__html__, { width: 240, height: 128 });
-execute({
-  graph: minimizeFlowGraph(Card),
-  inputValues: { product: 'JioBase', colorMode: 'light', surface: 'bold', appearance: 'primary' },
-  nodes,
-}).then((result) => {
-  console.log("result is here")
-  console.log(result);
-});
+
+let defaultInput = { product: 'JioBase', colorMode: 'light', surface: 'bold', appearance: 'primary' }
+
 let totalData = [
-  {name:"default", key:"initial", type:"Select", options:[[{name:"option1",value:"value1"},{name:"option2" ,value:"value2"}]]}
+  {
+    name: 'default',
+    key: 'initial',
+    type: 'Select',
+    options: [
+      [
+        { name: 'option1', value: 'value1' },
+        { name: 'option2', value: 'value2' },
+      ],
+    ],
+  },
 ];
 let selection = figma.currentPage.selection
 let currentlyDetailId = ""
@@ -78,7 +83,7 @@ handleEvent('backClicked', () => {
 });
 
 handleEvent('defaultValueChanged', ({value,index}) => {
-  console.log('default value changed ', value, index);
+ 
   for (let i = 0; i < totalData[index].effects.length; i++) {
 
     let resultValue
@@ -104,6 +109,23 @@ handleEvent('defaultValueChanged', ({value,index}) => {
     }
     else if (targetAttribute === "itemSpacing" || targetAttribute === "opacity" || targetAttribute.toLowerCase().includes("padding")  || targetAttribute.toLowerCase().includes("radius") || targetAttribute.toLowerCase().includes("stroke")) {
     n[targetAttribute] = +resultValue;
+    } else if (targetAttribute === "fill") {
+      defaultInput = {...defaultInput, [totalData[index].name]: resultValue}
+      execute({
+        graph: minimizeFlowGraph(Card),
+        inputValues: defaultInput,
+        nodes,
+      }).then((result) => {
+
+        let rgb = hexToRgb( result.container.background);
+    
+        (n as FrameNode).fills = [{type:"SOLID", color:rgb}]
+
+      }).catch((err) => {
+      
+        console.log(err);
+      });
+
     } else {
       n[targetAttribute] = resultValue;
     }

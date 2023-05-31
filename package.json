@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@plasmicapp/react-web": "^0.2.210",
-    "@tokens-studio/graph-engine": "^0.0.1",
+    "@tokens-studio/graph-engine": "^0.0.3",
     "core-js": "3.9.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

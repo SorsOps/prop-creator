@@ -32,6 +32,7 @@ function PropSetting_(props: PropSettingProps, ref: HTMLElementRefOf<'div'>) {
     'verticalSpacing',
     'strokeWeight',
     'character',
+    'fill',
     'opacity',
     'visible',
   ];
